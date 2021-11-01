@@ -1,4 +1,4 @@
-package com.umanizales.watchman_app.infrastructure.repositories;
+package com.umanizales.watchman_app.infrastructure.repositories.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
