@@ -1,4 +1,4 @@
-package com.umanizales.watchman_app.domain;
+package com.umanizales.watchman_app.infrastructure.controllers.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

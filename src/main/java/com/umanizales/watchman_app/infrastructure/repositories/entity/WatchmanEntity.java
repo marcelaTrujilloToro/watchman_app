@@ -19,7 +19,7 @@ import java.util.UUID;
 public class WatchmanEntity {
     @Id
     @Column(name = "code", nullable = false)
-    private UUID code;
+    private int code;
     @Basic
     @Column(name = "name", nullable = false, length = 30)
     private String name;
@@ -35,7 +35,7 @@ public class WatchmanEntity {
 
     public WatchmanEntity(WatchmanDTO watchmanDTO) {
         BeanUtils.copyProperties(watchmanDTO, this);
-        this.code = UUID.randomUUID();
+       // this.code = UUID.randomUUID();
     }
 
     public WatchmanDTO toWatchmanDTO(){

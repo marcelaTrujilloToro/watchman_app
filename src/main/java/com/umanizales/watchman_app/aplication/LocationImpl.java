@@ -1,6 +1,6 @@
 package com.umanizales.watchman_app.aplication;
 
-import com.umanizales.watchman_app.domain.WatchmanDTO;
+import com.umanizales.watchman_app.domain.LocationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -8,20 +8,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class WatchmanImpl implements WatchmanAble
-{
+public class LocationImpl implements LocationAble {
+
     @Autowired
-    @Qualifier("PostgresWatchmanRepository")
-    private WatchmanAble watchmanPersistance;
+    @Qualifier("PostgresLocationRepository")
+    private LocationAble locationPersistance;
 
     @Override
-    public WatchmanDTO save(WatchmanDTO watchmanDTO) {
-
-        return watchmanPersistance.save(watchmanDTO);
+    public LocationDTO save(LocationDTO locationDTO) {
+        return locationPersistance.save(locationDTO);
     }
 
     @Override
-    public WatchmanDTO update(WatchmanDTO watchmanDTO) {
+    public LocationDTO update(LocationDTO locationDTO) {
         return null;
     }
 
@@ -31,7 +30,7 @@ public class WatchmanImpl implements WatchmanAble
     }
 
     @Override
-    public List<WatchmanDTO> list() {
+    public List<LocationDTO> list() {
         return null;
     }
 }

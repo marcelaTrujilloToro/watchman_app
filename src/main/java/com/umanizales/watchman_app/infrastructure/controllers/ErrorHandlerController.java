@@ -1,7 +1,7 @@
 package com.umanizales.watchman_app.infrastructure.controllers;
 
-import com.umanizales.watchman_app.domain.ErrorDTO;
-import com.umanizales.watchman_app.domain.ResponseDTO;
+import com.umanizales.watchman_app.infrastructure.controllers.dto.ErrorDTO;
+import com.umanizales.watchman_app.infrastructure.controllers.dto.ResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

@@ -1,9 +1,12 @@
 package com.umanizales.watchman_app.infrastructure.repositories.entity;
 
+import com.umanizales.watchman_app.domain.LocationDTO;
+import com.umanizales.watchman_app.domain.WatchmanDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
 
@@ -23,4 +26,15 @@ public class LocationEntity {
     @Basic
     @Column(name = "address", nullable = false, length = 50)
     private String address;
+
+    public LocationEntity(LocationDTO locationDTO) {
+        BeanUtils.copyProperties(locationDTO, this);
+        // this.code = UUID.randomUUID();
+    }
+
+    public LocationDTO toLocationDTO(){
+        LocationDTO locationDTO = new LocationDTO();
+        BeanUtils.copyProperties(this, locationDTO);
+        return locationDTO;
+    }
 }
