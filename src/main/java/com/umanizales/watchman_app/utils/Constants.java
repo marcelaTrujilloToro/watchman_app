@@ -5,3 +5,7 @@ public class Constants {
     public static final String SUCCESS="La operación se ha efectuado con éxito";
 }
 
+
+//http://localhost:8080/actuator
+
+//http://localhost:8080/swagger-ui.html

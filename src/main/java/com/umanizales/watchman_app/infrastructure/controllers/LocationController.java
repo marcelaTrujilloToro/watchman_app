@@ -23,4 +23,11 @@ public class LocationController {
         return new ResponseEntity<>(new ResponseDTO("success",
                 locationImpl.save(locationDTO), null), HttpStatus.OK);
     }
+
+    @GetMapping
+    public  @ResponseBody ResponseEntity<ResponseDTO> list(){
+        return  new ResponseEntity<>(new ResponseDTO("Success",
+                locationImpl.list(), null), HttpStatus.OK );
+    }
+
 }

@@ -32,6 +32,6 @@ public class WatchmanImpl implements WatchmanAble
 
     @Override
     public List<WatchmanDTO> list() {
-        return null;
+        return watchmanPersistance.list();
     }
 }

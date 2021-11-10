@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,6 +39,11 @@ public class PostgresWatchmanRepository implements WatchmanAble {
 
     @Override
     public List<WatchmanDTO> list() {
-        return null;
+        List<WatchmanEntity>  watchmanEntities = watchmanRepository.findAll();
+        List<WatchmanDTO> watchmanDTOS = new ArrayList<>();
+        for(WatchmanEntity watchman:watchmanEntities){
+            watchmanDTOS.add(watchman.toWatchmanDTO());
+        }
+        return watchmanDTOS;
     }
 }

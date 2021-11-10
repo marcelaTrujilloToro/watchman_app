@@ -23,4 +23,10 @@ public class WatchmanController {
         return new ResponseEntity<>(new ResponseDTO("success",
                 watchmanImpl.save(watchmanDTO), null), HttpStatus.OK);
     }
+
+    @GetMapping
+    public @ResponseBody ResponseEntity<ResponseDTO> list(){
+        return new ResponseEntity<>(new ResponseDTO("Success",
+                watchmanImpl.list(), null), HttpStatus.OK );
+    }
 }

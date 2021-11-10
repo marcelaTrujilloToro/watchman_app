@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,6 +37,11 @@ public class PostgresLocationRepository implements LocationAble {
 
     @Override
     public List<LocationDTO> list() {
-        return null;
+        List<LocationEntity> locationEntities = locationRepository.findAll();
+        List<LocationDTO> locationDTOS = new ArrayList<>();
+        for (LocationEntity location: locationEntities) {
+            locationDTOS.add((location.toLocationDTO()));
+        }
+        return locationDTOS;
     }
 }

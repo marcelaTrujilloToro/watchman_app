@@ -31,6 +31,6 @@ public class LocationImpl implements LocationAble {
 
     @Override
     public List<LocationDTO> list() {
-        return null;
+        return locationPersistance.list();
     }
 }
