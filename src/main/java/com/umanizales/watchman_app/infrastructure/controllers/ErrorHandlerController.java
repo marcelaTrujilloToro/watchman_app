@@ -1,5 +1,6 @@
 package com.umanizales.watchman_app.infrastructure.controllers;
 
+import com.umanizales.watchman_app.exception.WatchmanAppException;
 import com.umanizales.watchman_app.infrastructure.controllers.dto.ErrorDTO;
 import com.umanizales.watchman_app.infrastructure.controllers.dto.ResponseDTO;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,14 @@ public class ErrorHandlerController {
         String message = "Algunos campos son inválidos o faltantes, por favor corrija los errores y vuelva a intentarlo";
         ResponseDTO response = new ResponseDTO( message,null , listErrors);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    //excepcion de logica de negocio para que avise cuando se envia un codigo que no existe
+    @ExceptionHandler(WatchmanAppException.class)
+    protected ResponseEntity<?>handle(WatchmanAppException ex){
+        //transformar el mesaje por una respuesta para el cliente con un codigo http
+        ResponseDTO  response = new ResponseDTO(ex.getMessage(),null,null);
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }
 

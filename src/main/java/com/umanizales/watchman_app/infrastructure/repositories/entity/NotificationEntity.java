@@ -18,9 +18,9 @@ public class NotificationEntity {
     @Column(name = "code", nullable = false)
     private int code;
     @Basic
-    @Column(name = "title", nullable = false, length = -1)
+    @Column(name = "title", nullable = false)
     private String title;
     @Basic
-    @Column(name = "description", nullable = false, length = -1)
+    @Column(name = "description", nullable = false)
     private String description;
 }

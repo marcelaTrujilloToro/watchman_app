@@ -2,6 +2,7 @@ package com.umanizales.watchman_app.infrastructure.controllers;
 
 import com.umanizales.watchman_app.aplication.WatchmanImpl;
 import com.umanizales.watchman_app.domain.WatchmanDTO;
+import com.umanizales.watchman_app.exception.WatchmanAppException;
 import com.umanizales.watchman_app.infrastructure.controllers.dto.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,19 @@ public class WatchmanController {
     ResponseEntity<ResponseDTO> save(@RequestBody @Valid WatchmanDTO watchmanDTO){
         return new ResponseEntity<>(new ResponseDTO("success",
                 watchmanImpl.save(watchmanDTO), null), HttpStatus.OK);
+    }
+
+    @PutMapping("{code}")
+    ResponseEntity<ResponseDTO> updateWatchman(@PathVariable int code, @RequestBody @Valid WatchmanDTO watchmanDTO) throws WatchmanAppException {
+        return new ResponseEntity<>(new ResponseDTO("success",
+                watchmanImpl.update(code, watchmanDTO), null), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{code}")
+    public @ResponseBody
+    ResponseEntity<ResponseDTO> deleteWatchman(@PathVariable int code) throws WatchmanAppException {
+        return  new ResponseEntity<ResponseDTO>(
+                new ResponseDTO("Success", watchmanImpl.delete(code), null), HttpStatus.OK);
     }
 
     @GetMapping

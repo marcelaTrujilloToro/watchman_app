@@ -1,6 +1,7 @@
 package com.umanizales.watchman_app.aplication;
 
 import com.umanizales.watchman_app.domain.LocationDTO;
+import com.umanizales.watchman_app.exception.WatchmanAppException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -12,25 +13,25 @@ public class LocationImpl implements LocationAble {
 
     @Autowired
     @Qualifier("PostgresLocationRepository")
-    private LocationAble locationPersistance;
+    private LocationAble locationPersistence;
 
     @Override
     public LocationDTO save(LocationDTO locationDTO) {
-        return locationPersistance.save(locationDTO);
+        return locationPersistence.save(locationDTO);
     }
 
     @Override
-    public LocationDTO update(LocationDTO locationDTO) {
-        return null;
+    public LocationDTO update(int code, LocationDTO locationDTO) throws WatchmanAppException{
+        return locationPersistence.update(code, locationDTO);
     }
 
     @Override
-    public boolean delete(int code) {
-        return false;
+    public boolean delete(int code) throws WatchmanAppException {
+        return locationPersistence.delete((code));
     }
 
     @Override
     public List<LocationDTO> list() {
-        return locationPersistance.list();
+        return locationPersistence.list();
     }
 }
